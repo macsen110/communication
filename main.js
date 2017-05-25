@@ -1,12 +1,26 @@
-const electron = require('electron')
+const electron = require('electron');
+//const net = require('net');
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-
+const net = require('net');
+const debug = /--debug/.test(process.argv[2])
+const client = net.connect({port: 8010}, () => {
+  // 'connect' listener
+  console.log('connected to server!');
+  client.write('world!\r\n');
+});
+client.on('data', (data) => {
+  console.log(data.toString());
+  //client.end();
+});
+client.on('end', () => {
+  console.log('disconnected from server');
+});
 const path = require('path')
 const url = require('url')
-
+require('electron-reload')(__dirname);
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -21,7 +35,11 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
