@@ -6,18 +6,25 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const net = require('net');
 const debug = /--debug/.test(process.argv[2])
-const client = net.connect({port: 8010}, () => {
-  // 'connect' listener
-  console.log('connected to server!');
-  client.write('world!\r\n');
-});
-client.on('data', (data) => {
-  console.log(data.toString());
-  //client.end();
-});
-client.on('end', () => {
-  console.log('disconnected from server');
-});
+try {
+
+
+  var Manager = require('socket.io-client');
+  var socket = new Manager('http://www.newday.com');
+  socket.on('news-day', function (data) {
+    console.log(data);
+  });
+  socket.on('connect', function(){
+    
+    socket.emit('other', { hello: 'i am web client' });
+  });
+  socket.on('oops', function(data) {
+    console.log(data)
+  })
+  
+}catch (e) {
+  console.log(e)
+}
 const path = require('path')
 const url = require('url')
 require('electron-reload')(__dirname);

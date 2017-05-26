@@ -19,6 +19,7 @@
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "~1.6.2",
-    "electron-reload": "^1.2.0"
+    "electron-reload": "^1.2.0",
+    "socket.io": "^2.0.1"
   }
 }
