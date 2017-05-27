@@ -4,30 +4,13 @@ const electron = require('electron');
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-const net = require('net');
 const debug = /--debug/.test(process.argv[2])
-try {
 
-
-  var Manager = require('socket.io-client');
-  var socket = new Manager('http://www.newday.com');
-  socket.on('news-day', function (data) {
-    console.log(data);
-  });
-  socket.on('connect', function(){
-    
-    socket.emit('other', { hello: 'i am web client' });
-  });
-  socket.on('oops', function(data) {
-    console.log(data)
-  })
-  
-}catch (e) {
-  console.log(e)
-}
 const path = require('path')
 const url = require('url')
-require('electron-reload')(__dirname);
+require('electron-reload')(__dirname, {
+  ignored:/node_modules|[\/\\src]\./
+});
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow

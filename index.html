@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <title>commnuit!</title>
+    <link rel="stylesheet" href="./stylesheet/base.css">
+    <link rel="stylesheet" href="./stylesheet/index.css">
   </head>
   <body>
-    <h1>Home!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <h1 class="tit">Home!</h1>
+    <div class="container" id="container"></div>
+      
   </body>
 
   <script>
     // You can also require other files to run in this process
-    require('./scripts/index.js')
+    require('./scripts/src/main.js')
   </script>
 </html>

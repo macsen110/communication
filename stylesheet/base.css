@@ -1,0 +1,79 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-text-size-adjust:none;
+    font-family: Arial,'Microsoft YaHei';
+    box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+em,
+i,
+strong {
+  font-style: normal;
+  font-weight: normal;
+  font-family: inherit;
+}
+p {
+  font-family: inherit;
+}
+button {
+  background: none;
+  border: none;
+}
+html {
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+}
+body {
+  min-height: 100%;
+  min-width: 100%;
+  line-height: 1.5;
+  color: #575758;
+  overflow-x: hidden;
+  font-size: 12px;
+  background: #edf3ff;
+}
+select {
+  border: 0;
+  background: none;
+  -webkit-appearance: none;
+  color:  inherit
+}
+
+img{
+    vertical-align: top;
+    border:none;
+}
+input,textarea{
+    user-select: text;
+    font-size: 12px;
+    /*//-webkit-appearance:none;*/
+}
+input:focus,select:focus,textarea:focus,button:focus{
+    outline: none;
+}
+input[type="text"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],input[type="email"],input[type="url"],textarea{
+    -webkit-appearance:none;
+    border: 1px solid;
+}
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance:none;
+}
+a{
+    text-decoration: none;
+    
+    -webkit-touch-callout:none;
+}
+em,i{
+    font-style: normal;
+}
+li{
+    list-style: none;
+}
