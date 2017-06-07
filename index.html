@@ -9,11 +9,22 @@
   <body>
     <h1 class="tit">Home!</h1>
     <div class="container" id="container"></div>
-      
+    <div class="app-home-page">
+        <div class="chat-container">
+            
+            <div class="chat-list">
+                
+            </div>
+            <div class="chat-box" ref="chat_box"></div>
+            <input type="text" ref="chat_content" class="ipt" id="ipt_box"/>
+            <botton class="btn" id="send_chat_btn">submit</botton>
+            <a href="./tpl/test.html">test</a>
+        </div>
+    </div>
   </body>
 
   <script>
     // You can also require other files to run in this process
-    require('./scripts/src/main.js')
+    require('./scripts/index')
   </script>
 </html>
