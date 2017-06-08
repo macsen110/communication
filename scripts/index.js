@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+console.log(React)
 //home views
 class Index extends Component {
 	constructor(props, context) {  
@@ -13,11 +14,11 @@ class Index extends Component {
         let _self = this;
         try {
         //var socket = io();
-            let Manager = require('socket.io-client');
-            let socket = new Manager('http://www.newday.com');
-            //this.props.socket = socket;
-            socket.on('connect', () => _self.setState({socket: socket}))
-            socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj))
+            // let Manager = require('socket.io-client');
+            // let socket = new Manager('http://www.newday.com');
+            // //this.props.socket = socket;
+            // socket.on('connect', () => _self.setState({socket: socket}))
+            // socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj))
          }
          catch (e) {
              console.log(e)
