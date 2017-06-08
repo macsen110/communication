@@ -1,73 +1,58 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-console.log(React)
-//home views
-class Index extends Component {
-	constructor(props, context) {  
-        super(props, context);
+
+module.exports = {
+    init() {
         this.state = {
             chatList: [],
             socket: null
         }
-    }
+        this.componentDidMount()
+    },
+	constructor(props, context) {  
+        //super(props, context);
+        
+    },
 	componentDidMount() {
         let _self = this;
         try {
-        //var socket = io();
-            // let Manager = require('socket.io-client');
-            // let socket = new Manager('http://www.newday.com');
-            // //this.props.socket = socket;
-            // socket.on('connect', () => _self.setState({socket: socket}))
-            // socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj))
+            let Manager = require('socket.io-client');
+            let socket = new Manager('http://www.newday.com');
+            socket.on('connect', () => {_self.state.socket = socket});
+            socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj));
+            let btn = document.getElementById('send_chat_btn');
+            let ipt = document.getElementById('ipt_box');         
+            btn.addEventListener('click', () => this.setChatList({data: ipt.value}))
          }
          catch (e) {
+             
              console.log(e)
          }
-	}
-    sendChat(data) {
-        var _self = this;
-        var ipt = _self.refs.chat_content;
-        _self.setChatList.bind(_self)({data: ipt.value});
-        _self.state.socket && _self.state.socket.emit('chat', {data: ipt.value})
-    }
+	},
     setChatList(obj) {
-        var _self = this;
-        var chatList = _self.state.chatList;
+        let _self = this;
+        let chatList = _self.state.chatList;
         chatList.push(obj)
-        _self.setState({
-            chatList: chatList
-        })
-    }
+        console.log(_self.state.socket)
+        _self.state.socket && _self.state.socket.emit('chat', obj)
+        _self.sendChat.bind(_self)(obj);
+        
+    },
+    getItemUi(data) {
+        console.log(data)
+        return `<li>${data}</li>`
+    },
+    sendChat(obj) {
+        
+        let _self = this;
+        let itemUi = _self.getItemUi(obj.data);
+        let chatBox = document.querySelector('.chat-list');
+        chatBox.insertAdjacentHTML('afterBegin', itemUi);
+    },
     render() {
-        var state = this.state; 
-        return (
-            <div className="app-home-page">
-                <div className="chat-container">
-                    {(()=>{
-                        if(state.chatList.length) {
-                            return (
-                                <ul className="chat-list">
-                                    {state.chatList.map((item, index) => {
-                                        return (<li key={index} className="item">{item.data}</li>)
-                                    })}
-                                </ul>
-                            )
-                        }
-                    })()}
-                    <div className="chat-box" ref="chat_box"></div>
-                    <input type="text" ref="chat_content" className="ipt"/>
-                    <botton className="btn" onClick={() => this.sendChat()} ref="send_chat_btn">submit</botton>
-                </div>
-            </div>
-        )
+        let state = this.state; 
+        
     }
     
 
-
-
-};
-const render = () => {ReactDOM.render((
-	<Index />
-), document.getElementById('container'));
 }
-render()
+
+module.exports.init()
