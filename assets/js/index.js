@@ -1,4 +1,3 @@
-
 module.exports = {
     init() {
         this.state = {
@@ -20,7 +19,7 @@ module.exports = {
             socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj));
             let btn = document.getElementById('send_chat_btn');
             let ipt = document.getElementById('ipt_box');         
-            btn.addEventListener('click', () => this.setChatList({data: ipt.value}))
+            btn && btn.addEventListener('click', () => this.setChatList({data: ipt.value}))
          }
          catch (e) {
              
@@ -45,7 +44,7 @@ module.exports = {
         let _self = this;
         let itemUi = _self.getItemUi(obj.data);
         let chatBox = document.querySelector('.chat-list');
-        chatBox.insertAdjacentHTML('afterBegin', itemUi);
+        chatBox && chatBox.insertAdjacentHTML('afterBegin', itemUi);
     },
     render() {
         let state = this.state; 

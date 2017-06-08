@@ -3,31 +3,42 @@
   <head>
     <meta charset="UTF-8">
     <title>commnuit!</title>
-    <link rel="stylesheet" href="./stylesheet/base.css">
-    <link rel="stylesheet" href="./stylesheet/index.css">
-    <script src="https://unpkg.com/vue@2.3.3/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/variables.css">
+    <link rel="stylesheet" href="./assets/css/nav.css">
+    <link rel="stylesheet" href="./assets/css/chat.css">
 
   </head>
   <body>
-    <h1 class="tit">Hosssme!</h1>
-    <div class="container" id="container"></div>
-    <div class="app-home-page">
-        <div class="chat-container">
-            
-            <div class="chat-list">
-                
-            </div>
-            <div class="chat-box" ref="chat_box"></div>
-            <input type="text" ref="chat_content" class="ipt" id="ipt_box"/>
-            <botton class="btn" id="send_chat_btn">submit</botton>
-            <a href="./tpl/test.html">test</a>
+      <nav class="nav js-nav">
+        <header class="nav-header">
+          <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+          <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
+        </header>
+
+        <div class="nav-item u-category-windows">
+          <h5 class="nav-category">
+            <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
+            Windows
+          </h5>
+          <button type="button" id="button-windows" data-section="windows" class="nav-button">Create and manage <em>windows</em></button>
+          <button type="button" id="button-crash-hang" data-section="crash-hang" class="nav-button">Handling window <em>crashes and hangs</em></button>
         </div>
-    </div>
+
+
+      <footer class="nav-footer">
+        <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
+        <a class="nav-footer-logo" href="https://github.com" aria-label="Homepage">
+          <svg class="nav-footer-icon"><use xlink:href="assets/img/icons.svg#icon-love"></use></svg>
+        </a>
+      </footer>
+    </nav>
+    <main class="content"></main>
   </body>
 
 <script>
     // You can also require other files to run in this process
-    require('./scripts/index')
+    require('./assets/js/index')
   </script>
   </body>
 
