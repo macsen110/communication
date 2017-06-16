@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="shylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/chat.css">
+</head>
+<body class="page-chat">
+    <div class="container">
+        <div class="action-box">
+            <div class="panel panel-default">
+                <div class="panel-heading">chat</div>
+                <div class="panel-body">
+                    <ul class="chat-list"></ul>
+                        <div class="input-group col-md-3">
+                            <input type="text" class="ipt form-control" id="ipt_box">
+                            <span class="input-group-btn">
+                                <botton id="send_chat_btn" class="btn btn-default">send</botton> 
+                                <botton class="comm-btn audio-btn"></botton>
+                                <input hidden id="a"  type="file" accept="image/*" />
+                                <label for="a" class="btn btn-default">file</label>
+                                <button class="btn btn-primary" id="getMedia">record</button>
+                            </span>
+                    </div>
+                   
+                    
+                </div>
+            </div>         
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <audio id="audio"></audio>  
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <script src="../js/chat.js"></script>
+    
+
+</body>
+</html>

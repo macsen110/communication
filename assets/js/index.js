@@ -1,57 +1,22 @@
-module.exports = {
-    init() {
-        this.state = {
-            chatList: [],
-            socket: null
+;(function (module) {
+    module = module || {}; 
+    module.exports = {
+        init() {
+            
+            
+        },
+        testNotice() {
+            Notification.requestPermission(function(permission){
+                console.log(permission)
+                var config = {
+                              body:'Thanks for clicking that button. Hope you liked.',
+                              icon:'https://cdn2.iconfinder.com/data/icons/ios-7-style-metro-ui-icons/512/MetroUI_HTML5.png',
+                              dir:'auto' 
+                              };
+                var notification = new Notification("Here I am!",config);
+            });
         }
-        this.componentDidMount()
-    },
-	constructor(props, context) {  
-        //super(props, context);
-        
-    },
-	componentDidMount() {
-        let _self = this;
-        try {
-            let Manager = require('socket.io-client');
-            let socket = new Manager('http://www.newday.com');
-            socket.on('connect', () => {_self.state.socket = socket});
-            socket.on('chat', (obj) => _self.setChatList.bind(_self)(obj));
-            let btn = document.getElementById('send_chat_btn');
-            let ipt = document.getElementById('ipt_box');         
-            btn && btn.addEventListener('click', () => this.setChatList({data: ipt.value}))
-         }
-         catch (e) {
-             
-             console.log(e)
-         }
-	},
-    setChatList(obj) {
-        let _self = this;
-        let chatList = _self.state.chatList;
-        chatList.push(obj)
-        console.log(_self.state.socket)
-        _self.state.socket && _self.state.socket.emit('chat', obj)
-        _self.sendChat.bind(_self)(obj);
-        
-    },
-    getItemUi(data) {
-        console.log(data)
-        return `<li>${data}</li>`
-    },
-    sendChat(obj) {
-        
-        let _self = this;
-        let itemUi = _self.getItemUi(obj.data);
-        let chatBox = document.querySelector('.chat-list');
-        chatBox && chatBox.insertAdjacentHTML('afterBegin', itemUi);
-    },
-    render() {
-        let state = this.state; 
-        
     }
-    
 
-}
-
-module.exports.init()
+    module.exports.init()
+} (window.module))

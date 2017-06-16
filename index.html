@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/variables.css">
     <link rel="stylesheet" href="./assets/css/nav.css">
-    <link rel="stylesheet" href="./assets/css/chat.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
 
   </head>
   <body>
       <nav class="nav js-nav">
         <header class="nav-header">
-          <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+          <h1 class="nav-title"><strong>API Demos</strong></h1>
           <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
         </header>
 
@@ -21,8 +21,8 @@
             <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
             Windows
           </h5>
-          <button type="button" id="button-windows" data-section="windows" class="nav-button">Create and manage <em>windows</em></button>
-          <button type="button" id="button-crash-hang" data-section="crash-hang" class="nav-button">Handling window <em>crashes and hangs</em></button>
+          <button type="button" id="button-windows"  data-iframe="index" class="nav-button active">Ps</em></button>
+          <button type="button" id="button-crash-hang" data-iframe="chat" class="nav-button">chat</em></button>
         </div>
 
 
@@ -33,12 +33,31 @@
         </a>
       </footer>
     </nav>
-    <main class="content"></main>
+    <main class="content">
+      <iframe id="iframe_container" class="iframe-container" src="" frameborder="0"></iframe>
+      <div id="loading_dom" class="windows8">
+        <div class="wBall" id="wBall_1">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_2">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_3">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_4">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_5">
+          <div class="wInnerBall"></div>
+        </div>
+      </div>
+    </main>
   </body>
 
 <script>
     // You can also require other files to run in this process
-    require('./assets/js/index')
+    require('./assets/js/main')
   </script>
   </body>
 
